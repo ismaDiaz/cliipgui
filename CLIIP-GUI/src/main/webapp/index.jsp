@@ -5,23 +5,13 @@ pageEncoding="ISO-8859-1"%>
 <html>
   <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://apis.google.com/js/api.js"></script>
     <meta name="google-signin-client_id" content="480486348509-mro5es12b37ng1nun6equup2tnmcbgtc.apps.googleusercontent.com">
-    
     <link href="css/estilos.css" rel= "stylesheet" type= "text/css"/>
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
     
     <title>Hello world</title>
-    
-    <script>
-    	function init() {
- 			 gapi.load('auth2', function() {
-    			gapi.auth.init();
-  			});
-		}
-    </script>
     
   </head>
 
@@ -48,27 +38,6 @@ pageEncoding="ISO-8859-1"%>
    		</div>
    		<button type="submit">Login</button>
   		</form>
-
-	  	<div class="g-signin2" data-onsuccess="onSignIn"></div>
-	  	<div id="acceder"></div>
-		<script type="text/javascript">
-			function onSignIn(googleUser) {
-				  var profile = googleUser.getBasicProfile();
-				  var name=profile.getName();
-			      var email=profile.getEmail();
-				  
-				}
-		   </script>
-		   
-		   <a href="index.html" onclick="signOut();">Sign out</a>
-		   <script>
-			  function signOut() {
-			    var auth2 = gapi.auth2.getAuthInstance();
-			    auth2.signOut().then(function () {
-			      console.log('User signed out.');
-			    });
-			  }
-			</script>
    </div>
    
   </body>

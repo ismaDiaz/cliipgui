@@ -19,7 +19,6 @@ public class UsuarioDAOImplementation implements UsuarioDAO {
 			instancia = new UsuarioDAOImplementation();
 		return instancia;
 	}
-	private List<Usuario> usuariosAuth;
 
 
 	@SuppressWarnings("unchecked")
@@ -29,7 +28,6 @@ public class UsuarioDAOImplementation implements UsuarioDAO {
 		Session session = SessionFactoryService.get().openSession();
 		session.beginTransaction();
 		// operaciones
-		//usuariosAuth.add(u);
 		
 		session.save(u);
 		session.getTransaction().commit();
@@ -45,11 +43,6 @@ public class UsuarioDAOImplementation implements UsuarioDAO {
 		Session session = SessionFactoryService.get().openSession();
 		session.beginTransaction();
 		// operaciones
-		/*
-		 * Usuario usu= null; for(int i=0; i<usuariosAuth.size(); i++) { Usuario user=
-		 * usuariosAuth.get(i); if(user.getEmail().equals(email)) usu= user; } Usuario u
-		 * =usuariosAuth.get(usuariosAuth.indexOf(usu));
-		 */
 		
 		Usuario u = session.get(Usuario.class, email);
 		session.getTransaction().commit();
@@ -63,7 +56,6 @@ public class UsuarioDAOImplementation implements UsuarioDAO {
 		Session session = SessionFactoryService.get().openSession();
 		session.beginTransaction();
 		// operaciones
-		//usuariosAuth.set(usuariosAuth.indexOf(u),u);
 		
 		session.saveOrUpdate(u);
 		session.getTransaction().commit();
@@ -77,7 +69,6 @@ public class UsuarioDAOImplementation implements UsuarioDAO {
 		Session session = SessionFactoryService.get().openSession();
 		session.beginTransaction();
 		// operaciones
-		//usuariosAuth.remove(usuariosAuth.indexOf(u));
 		
 		session.delete(u);
 		session.getTransaction().commit();
@@ -91,9 +82,8 @@ public class UsuarioDAOImplementation implements UsuarioDAO {
 		Session session = SessionFactoryService.get().openSession();
 		session.beginTransaction();
 		// operaciones
-		//devolver usuariosAuth
 		
-		List<Usuario> usuarios = session.createQuery("from USUARIO").list();
+		List<Usuario> usuarios = session.createQuery("from usuarios").list();
 		session.getTransaction().commit();
 		session.close();
 		return usuarios;
@@ -105,10 +95,9 @@ public class UsuarioDAOImplementation implements UsuarioDAO {
 		Session session = SessionFactoryService.get().openSession();
 		session.beginTransaction();
 		// operaciones
-		
-		
+
 		Usuario u = null;
-		Query q = session.createQuery("select u from USUARIO u where u.email = :email and u.password = :password");
+		Query q = session.createQuery("select u from usuarios u where u.email = :email and u.password = :password");
 		q.setParameter("email", email);
 		q.setParameter("password", password);
 		List<Usuario> usuarios = q.getResultList();

@@ -37,13 +37,8 @@ public class FormLoginServlet extends HttpServlet {
     	Usuario u = UsuarioDAOImplementation.getInstance().login(email, password);
     	
     	if( u.getEmail().equals(email) && u.getPassword().equals(password) ) {
-    		//req.getSession().setAttribute("admin", true);
-    		//req.getSession().setAttribute("usuarios", usuarios);
+    		req.getSession().setAttribute("usuarios", u);
     		getServletContext().getRequestDispatcher("/Principal.jsp").forward(req,resp);
-			/*
-			 * } else if ( null != u ) { req.getSession().setAttribute("usuario", u);
-			 * getServletContext().getRequestDispatcher("/TFG.jsp").forward(req,resp);
-			 */
     	} else {
     		getServletContext().getRequestDispatcher("/index.jsp").forward(req,resp);
     	}

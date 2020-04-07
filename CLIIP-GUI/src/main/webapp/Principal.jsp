@@ -1,25 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
-<%-- <%
-	HttpSession objsession = request.getSession(false);
-	String usuario = (String)objsession.getAttribute("usuario");
-	if(usuario.equals("")){
-		response.sendRedirect("index.jsp");
-	}
 
-%> --%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-<!-- <script>
-	 gapi.load('auth2', function(){
-	 	gapi.auth.init();
-	 })
-</script> -->
 
 <title>Sistema Cliip</title>
 </head>
@@ -31,18 +18,9 @@
 	
 	<div class= "container mt-4" accion="index.jsp">
 		<h1>Bienvenido al sistema</h1>
-		<a href= "index.html">Salir</a>
+		<form action="FormLogoutServlet">
+			<button type="submit">Salir</button>
+		</form>
 	</div>
-	<a href="index.html" onclick="signOut();">Sign out</a>
-	<script>
-		function signOut() {
-			var auth2 = gapi.auth2.getAuthInstance();
-			auth2.signOut().then(function () {
-			console.log('User signed out.');
-			});
-		}
-	</script>
-	
-
 </body>
 </html>
